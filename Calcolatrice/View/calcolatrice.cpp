@@ -30,6 +30,16 @@ Calcolatrice::~Calcolatrice()
     delete ui;
 }
 
+void Calcolatrice::disabilitaView()
+{
+
+}
+
+void Calcolatrice::abilitaView()
+{
+
+}
+
 void Calcolatrice::nonSelez()
 {
     QString s = "Seleziona una figura della finestra corrente!";

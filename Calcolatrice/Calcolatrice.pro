@@ -29,7 +29,9 @@ HEADERS  += View/calcolatrice.h \
     View/viewrettangolo.h \
     View/viewquadrato.h \
     View/itemtriangolo.h \
-    View/itemdescrizione.h
+    View/itemdescrizione.h \
+    ../../../../../../../home/2/2014/fminna/Desktop/Progetto/Calcolatrice/Controller/addfigura.h \
+    View/inseriscifigura.h
 
 SOURCES += main.cpp \
     View/calcolatrice.cpp \
@@ -48,6 +50,8 @@ SOURCES += main.cpp \
     View/viewrettangolo.cpp \
     View/viewquadrato.cpp \
     View/itemtriangolo.cpp \
-    View/itemdescrizione.cpp
+    View/itemdescrizione.cpp \
+    ../../../../../../../home/2/2014/fminna/Desktop/Progetto/Calcolatrice/Controller/addfigura.cpp \
+    View/inseriscifigura.cpp
 
 FORMS    += View/calcolatrice.ui

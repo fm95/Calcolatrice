@@ -24,6 +24,9 @@ public:
     explicit Calcolatrice(QWidget *parent = 0);
     ~Calcolatrice();
 
+    void disabilitaView();
+    void abilitaView();
+
 private slots:
     void on_eliminaFigura_pressed();
 
