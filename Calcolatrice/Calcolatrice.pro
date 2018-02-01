@@ -13,7 +13,7 @@ QMAKE_CXXFLAGS += -std=c++11
 TARGET = Calcolatrice
 TEMPLATE = app
 
-HEADERS  += View/calcolatrice.h \
+HEADERS  += data.h \
     Model/punto.h \
     Model/figura.h \
     Model/vertice.h \
@@ -22,6 +22,7 @@ HEADERS  += View/calcolatrice.h \
     Model/quadrilatero.h \
     Model/rettangolo.h \
     Model/quadrato.h \
+    View/calcolatrice.h \
     View/assi.h \
     View/viewtriangolo.h \
     View/scenetriangolo.h \
@@ -29,12 +30,13 @@ HEADERS  += View/calcolatrice.h \
     View/viewrettangolo.h \
     View/viewquadrato.h \
     View/itemtriangolo.h \
-    View/itemdescrizione.h \
-    ../../../../../../../home/2/2014/fminna/Desktop/Progetto/Calcolatrice/Controller/addfigura.h \
-    View/inseriscifigura.h
+    View/itemdescrizione.h \ 
+    View/inseriscifigura.h \
+    Controller/addfigura.h \
+    Controller/controllerlista.h
 
 SOURCES += main.cpp \
-    View/calcolatrice.cpp \
+    data.cpp \
     Model/punto.cpp \
     Model/vertice.cpp \
     Model/poligonoconvesso.cpp \
@@ -43,6 +45,7 @@ SOURCES += main.cpp \
     Model/rettangolo.cpp \
     Model/quadrato.cpp \
     Model/figura.cpp \
+    View/calcolatrice.cpp \
     View/assi.cpp \
     View/viewtriangolo.cpp \
     View/scenetriangolo.cpp \
@@ -51,7 +54,8 @@ SOURCES += main.cpp \
     View/viewquadrato.cpp \
     View/itemtriangolo.cpp \
     View/itemdescrizione.cpp \
-    ../../../../../../../home/2/2014/fminna/Desktop/Progetto/Calcolatrice/Controller/addfigura.cpp \
-    View/inseriscifigura.cpp
+    View/inseriscifigura.cpp \
+    Controller/addfigura.cpp \
+    Controller/controllerlista.cpp
 
 FORMS    += View/calcolatrice.ui

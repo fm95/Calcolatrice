@@ -22,6 +22,7 @@ class Calcolatrice : public QDialog
 
 public:
     explicit Calcolatrice(QWidget *parent = 0);
+    void closeEvent(QCloseEvent *event);
     ~Calcolatrice();
 
     void disabilitaView();
