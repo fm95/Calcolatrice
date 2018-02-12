@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icone/logo.png</file>
+        <file>Icone/inserisci.png</file>
+        <file>Icone/goOn.png</file>
+        <file>Icone/delete.png</file>
+        <file>Icone/deleteAll.png</file>        
+        <file>Icone/power-button.png</file>
+        <file>Icone/annulla.png</file>
+        <file>Icone/conferma.png</file>
+        <file>Icone/calculation.png</file>
+    </qresource>
+</RCC>
