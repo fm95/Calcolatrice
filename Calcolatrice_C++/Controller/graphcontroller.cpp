@@ -83,6 +83,21 @@ void GraphController::c_aggiornaInfo(QString nome, unsigned int pos, double info
     c_stampaFigura(nome);
 }
 
+double GraphController::c_getMax(QString nome) const
+{
+    return dati->getMax(nome);
+}
+
+double GraphController::c_getMin(QString nome) const
+{
+    return dati->getMin(nome);
+}
+
+double GraphController::c_getAVG(QString nome) const
+{
+    return dati->getAVG(nome);
+}
+
 // Restituisce la somma dei campi info di una figura
 double GraphController::c_getSomma(QString nome) const
 {
@@ -92,6 +107,11 @@ double GraphController::c_getSomma(QString nome) const
 double GraphController::c_getSottrazione(QString nome) const
 {
     return dati->getSottrazione(nome);
+}
+
+double GraphController::c_getApotema(QString nome) const
+{
+     return dati->getApotema(nome);
 }
 
 void GraphController::c_stampaFigura(QString n)

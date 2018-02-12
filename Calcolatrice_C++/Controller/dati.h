@@ -25,9 +25,9 @@ public:
     double getAVG(QString) const;
     double getSomma(QString) const;
     double getSottrazione(QString) const;
+    double getApotema(QString) const;
 
     bool nomeUnico(QString) const;
-
     PoligonoConvesso*& getPoligono(QString);
 
 private:

@@ -28,9 +28,8 @@ public:
     void closeEvent(QCloseEvent *event);
 
 private slots:
-//    void on_avanti_pressed(); // nuova figura
-    void on_Conferma_pressed(); // e inserisci vertice
-    void on_Avanti_pressed();
+    void Conferma_pressed();
+    void Avanti_pressed();
 
 private:
     Ui::insertFigura *ui;

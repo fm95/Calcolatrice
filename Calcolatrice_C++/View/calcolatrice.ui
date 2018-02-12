@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>760</width>
-    <height>830</height>
+    <height>746</height>
    </rect>
   </property>
   <property name="font">
@@ -132,44 +132,6 @@ border-radius: 2px;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="inserisciFigura">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <property name="toolTip">
-    <string>Inserisci una nuova figura</string>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="text">
-    <string>Inserisci Figura</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normalon>:/Icone/inserisci.png</normalon>
-    </iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>25</width>
-     <height>25</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QLabel" name="labRisultati">
    <property name="geometry">
     <rect>
@@ -205,9 +167,9 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>660</y>
-     <width>131</width>
-     <height>31</height>
+     <y>690</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="statusTip">
@@ -217,7 +179,7 @@ padding-left: 5px;</string>
     <string comment="Somma campi info" extracomment="Somma campi info"/>
    </property>
    <property name="text">
-    <string>Somma +</string>
+    <string>Somma</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -229,9 +191,9 @@ padding-left: 5px;</string>
   <widget class="QPushButton" name="eliminaVertice">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>660</y>
-     <width>181</width>
+     <x>260</x>
+     <y>650</y>
+     <width>241</width>
      <height>31</height>
     </rect>
    </property>
@@ -245,74 +207,14 @@ padding-left: 5px;</string>
   <widget class="QPushButton" name="inserisciVertice">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>660</y>
-     <width>181</width>
+     <x>10</x>
+     <y>650</y>
+     <width>241</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Inserisci Vertice</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="eliminaFigura">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>10</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="text">
-    <string>Elimina Figura</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normalon>:/Icone/delete.png</normalon>
-    </iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>25</width>
-     <height>25</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="eliminaTutto">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>10</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="text">
-    <string>Elimina Tutto</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normalon>:/Icone/deleteAll.png</normalon>
-    </iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>25</width>
-     <height>25</height>
-    </size>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -351,9 +253,9 @@ padding-left: 5px;</string>
   <widget class="QPushButton" name="modificaInfo">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>700</y>
-     <width>181</width>
+     <x>510</x>
+     <y>650</y>
+     <width>241</width>
      <height>31</height>
     </rect>
    </property>
@@ -364,13 +266,13 @@ padding-left: 5px;</string>
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="Sottrazione">
+  <widget class="QPushButton" name="MaxInfo">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>700</y>
-     <width>131</width>
-     <height>31</height>
+     <x>260</x>
+     <y>690</y>
+     <width>111</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="statusTip">
@@ -380,7 +282,155 @@ padding-left: 5px;</string>
     <string comment="Somma campi info" extracomment="Somma campi info"/>
    </property>
    <property name="text">
-    <string>Sottrazione -</string>
+    <string>Max Info</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="InserisciFigura">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Inserisci Figura</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="EliminaFigura">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>10</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Elimina Figura</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="EliminaTutto">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>10</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Elimina tutto</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Sottrazione">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>690</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="accessibleName">
+    <string comment="Somma campi info" extracomment="Somma campi info"/>
+   </property>
+   <property name="text">
+    <string>Sottrazione</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="MinInfo">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>690</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="accessibleName">
+    <string comment="Somma campi info" extracomment="Somma campi info"/>
+   </property>
+   <property name="text">
+    <string>Min Info</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AVGInfo">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>690</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="accessibleName">
+    <string comment="Somma campi info" extracomment="Somma campi info"/>
+   </property>
+   <property name="text">
+    <string>AVG Info</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Apotema">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>690</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="accessibleName">
+    <string comment="Somma campi info" extracomment="Somma campi info"/>
+   </property>
+   <property name="text">
+    <string>Apotema</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>

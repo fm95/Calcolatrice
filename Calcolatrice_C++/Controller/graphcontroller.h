@@ -29,8 +29,12 @@ public:
     void c_modificaInfo(QString);
     void c_aggiornaInfo(QString, unsigned int, double);
 
+    double c_getMax(QString) const;
+    double c_getMin(QString) const;
+    double c_getAVG(QString) const;
     double c_getSomma(QString) const;
     double c_getSottrazione(QString) const;
+    double c_getApotema(QString) const;
 
     void c_stampaFigura(QString);
     void c_enabledQd(bool);

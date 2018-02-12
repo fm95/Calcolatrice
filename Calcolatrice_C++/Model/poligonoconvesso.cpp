@@ -51,7 +51,9 @@ void PoligonoConvesso::print(std::ostream &stream) const
     {
         stream<<"("<<Vertici[i].getX()<<","<<Vertici[i].getY()<<") ";
         stream<<Vertici[i].getInfo()<<" ";
-        stream<<"["<<calcolaAngolo(Vertici, i)<<"°]";
+        stream<<"[";
+        stream<<calcolaAngolo(Vertici, i);
+        stream<<"\u00B0]";
 
         i!=(Vertici.size()-1)? stream<<" > " : stream<<"";
     }

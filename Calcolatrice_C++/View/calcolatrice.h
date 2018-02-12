@@ -52,16 +52,20 @@ protected:
     void mousePressEvent(QMouseEvent *) override;
 
 private slots:
-    void on_inserisciFigura_pressed();
-    void on_eliminaFigura_pressed();
-    void on_eliminaTutto_pressed();
+    void inserisciFigura_pressed();
+    void eliminaFigura_pressed();
+    void eliminaTutto_pressed();
 
-    void on_inserisciVertice_pressed();
-    void on_eliminaVertice_pressed();
-    void on_modificaInfo_pressed();
+    void inserisciVertice_pressed();
+    void eliminaVertice_pressed();
+    void modificaInfo_pressed();
 
-    void on_Somma_pressed();
-    void on_Sottrazione_pressed();
+    void Max_pressed();
+    void Min_pressed();
+    void AVG_pressed();
+    void Somma_pressed();
+    void Sottrazione_pressed();
+    void Apotema_pressed();
 
 private:
     Ui::Calcolatrice *ui;

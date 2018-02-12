@@ -19,9 +19,9 @@ insertFigura::insertFigura(GraphController *g, QWidget *parent) :
     ui->i_Y->setMaxLength(3);
     ui->i_Info->setMaxLength(10);
 
-    connect(ui->Avanti, SIGNAL(clicked()), this, SLOT(on_Avanti_pressed()));
-    connect(ui->Annulla, SIGNAL(pressed()),this, SLOT(close()));
-    connect(ui->Conferma, SIGNAL(clicked()), this, SLOT(on_Conferma_pressed()));
+    connect(ui->Conferma, SIGNAL(pressed()), this, SLOT(Conferma_pressed()));
+    connect(ui->Avanti, SIGNAL(pressed()), this, SLOT(Avanti_pressed()));
+    connect(ui->Annulla, SIGNAL(pressed()), this, SLOT(close()));
 
     show();
 }
@@ -43,9 +43,9 @@ insertFigura::insertFigura(QString nome, GraphController *g, QWidget *parent) :
     ui->i_nLati->setReadOnly(true);
     ui->error->setText(QString("Inserisci il nuovo vertice!"));
 
-    connect(ui->Avanti, SIGNAL(clicked()), this, SLOT(on_Avanti_pressed()));
-    connect(ui->Annulla, SIGNAL(pressed()),this, SLOT(close()));
-    connect(ui->Conferma, SIGNAL(clicked()), this, SLOT(on_Conferma_pressed()));
+    connect(ui->Conferma, SIGNAL(pressed()), this, SLOT(Conferma_pressed()));
+    connect(ui->Avanti, SIGNAL(pressed()), this, SLOT(Avanti_pressed()));
+    connect(ui->Annulla, SIGNAL(pressed()), this, SLOT(close()));
 
     show();
 }
@@ -75,8 +75,9 @@ insertFigura::insertFigura(unsigned int, QString nome, GraphController *g, QWidg
     ui->error->setText(QString("Seleziona un vertice da eliminare!"));
     ui->Conferma->setText("Elimina");
 
-    connect(ui->Annulla, SIGNAL(clicked()),this, SLOT(close()));
-    connect(ui->Conferma, SIGNAL(clicked()), this, SLOT(on_Conferma_pressed()));
+    connect(ui->Conferma, SIGNAL(pressed()), this, SLOT(Conferma_pressed()));
+    connect(ui->Avanti, SIGNAL(pressed()), this, SLOT(Avanti_pressed()));
+    connect(ui->Annulla, SIGNAL(pressed()), this, SLOT(close()));
 
     show();
 }
@@ -105,13 +106,12 @@ insertFigura::insertFigura(QString nome, double, GraphController *g, QWidget *pa
     ui->i_X->setReadOnly(true);
     ui->i_Y->setText(QString::number(buildV[pos].getY()));
     ui->i_Y->setReadOnly(true);
-
     ui->i_Info->setText(QString::number(buildV[pos].getInfo())); // da modificare
-
     ui->Conferma->setText(QString("Modifica"));
-    connect(ui->Annulla, SIGNAL(pressed()),this, SLOT(close()));
-    connect(ui->Conferma, SIGNAL(pressed()), this, SLOT(on_Conferma_pressed()));
-    connect(ui->Avanti, SIGNAL(pressed()), ui->i_Info, SLOT(on_Avanti_pressed()));
+
+    connect(ui->Conferma, SIGNAL(pressed()), this, SLOT(Conferma_pressed()));
+    connect(ui->Avanti, SIGNAL(pressed()), this, SLOT(Avanti_pressed()));
+    connect(ui->Annulla, SIGNAL(pressed()), this, SLOT(close()));
 
     show();
 }
@@ -121,12 +121,9 @@ insertFigura::~insertFigura()
 {
     ct->c_enabledQd(true); // riabilito la calcolatrice
     delete ui;
-//    if(!costruito)
-//    {
-        for(auto it=buildV.begin(); it!=buildV.end();)
-            it = buildV.erase(it);
-        buildV.clear();
-//    }
+    for(auto it=buildV.begin(); it!=buildV.end();)
+        it = buildV.erase(it);
+    buildV.clear();
     destroyed(this);
 }
 
@@ -136,39 +133,7 @@ void insertFigura::closeEvent(QCloseEvent *event)
     event->accept(); // chiama il distruttore
 }
 
-void insertFigura::on_Avanti_pressed()
-{
-    if(pos==-1 && inf==-1)
-    {
-        if(ui->i_X->isEnabled())
-            checkVertice();
-        if(ui->i_nLati->isEnabled())
-            checknLati();
-        if(ui->i_Nome->isEnabled())
-            checkNome();
-    }
-    else // devo modificare info di un vertice
-    {
-        if(buildV[pos].getInfo() != ui->i_Info->text().toDouble()) // e' stata aggiornata l'info
-        {
-//            if(check campo info)
-            ui->Avanti->setEnabled(false);
-//            else
-//                print errore
-        }
-        else
-        {
-            pos++; // aumento la posizione
-            if(pos==buildV.size()) // ricomincio il giro
-                pos=0;
-            ui->i_X->setText(QString::number(buildV[pos].getX())); // aggiorno i punti
-            ui->i_Y->setText(QString::number(buildV[pos].getY()));
-            ui->i_Info->setText(QString::number(buildV[pos].getInfo()));
-        }
-    }
-}
-
-void insertFigura::on_Conferma_pressed()
+void insertFigura::Conferma_pressed()
 {
     if(!ui->Avanti->isEnabled()) // significa che ho inserito il nome, il #lati e tutti i vertici
     {
@@ -182,6 +147,47 @@ void insertFigura::on_Conferma_pressed()
     }
     else
         ui->error->setText(QString("Compila tutti i campi correttamente!"));
+}
+
+void insertFigura::Avanti_pressed()
+{
+    if(pos==-1 && inf==-1)
+    {
+        if(ui->i_X->isEnabled())
+            checkVertice();
+        if(ui->i_nLati->isEnabled())
+            checknLati();
+        if(ui->i_Nome->isEnabled())
+            checkNome();
+    }
+    else if(inf==-1)
+    {
+        // ELIMINA VERTICEEEEE
+    }
+    else // devo modificare info di un vertice
+    {
+        if(buildV[pos].getInfo() != ui->i_Info->text().toDouble()) // e' stata aggiornata l'info
+        {
+            QRegExp i("(|-)((?!0\\d)\\d{1,7}(\\.\\d{1,3})?)"); // per campo Info
+            if(i.exactMatch(ui->i_Info->text()))
+            {
+                if(ui->i_Info->text().toDouble() == -0) // non viene verificato dalla regexc
+                    ui->i_Info->setText("0");
+                ui->Avanti->setEnabled(false);
+            }
+            else
+                ui->error->setText(QString("Inserisci un info valido!"));
+        }
+        else
+        {
+            pos++; // aumento la posizione
+            if(pos==buildV.size()) // ricomincio il giro
+                pos=0;
+            ui->i_X->setText(QString::number(buildV[pos].getX())); // aggiorno i punti
+            ui->i_Y->setText(QString::number(buildV[pos].getY()));
+            ui->i_Info->setText(QString::number(buildV[pos].getInfo()));
+        }
+    }
 }
 
 // Controlli input
