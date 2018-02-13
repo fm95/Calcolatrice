@@ -24,11 +24,11 @@ public:
     virtual string toString() const =0;
 
     QString getNome() const;
-    void setNome(QString);
 
 protected:
     QString Nome;
     virtual void print(ostream &) const =0;
+    void setNome(QString);
 
 private:
     static int maxNomeLength;

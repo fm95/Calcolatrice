@@ -1,19 +1,23 @@
 #include "calcolatrice.h"
 #include "ui_calcolatrice.h"
+#include "poligonic.h"
+#include "Controller/graphcontroller.h"
+#include "insertfigura.h"
+#include "Model/poligonoconvesso.h"
+#include "gscene.h"
+#include "insertfigura.h"
+#include "gview.h"
 
 Calcolatrice::Calcolatrice(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Calcolatrice),
     ct(new GraphController(this)),
-    msg(0),
     pS(0)
 {
     ui->setupUi(this);
     setWindowIcon(QIcon(":/Icone/logo.png"));
     setFixedSize(760, 750);
     setUpdatesEnabled(true);
-
-//    ui->labRisultati + scrollbar
 
 //    TRIANGOL0
     lt.setContentsMargins(0,0,0,0);
@@ -69,12 +73,12 @@ Calcolatrice::~Calcolatrice()
 
     delete ct; // controller e dati
 
-    if(msg) delete msg; // qmessagebox
-    delete vT;
-    delete vQr; // view e scene
+    delete vT;  // view e scene
+    delete vQr;
     delete vR;
     delete vQ;
-    this->destroyed(this);
+
+    destroyed(this);
 }
 
 void Calcolatrice::closeEvent(QCloseEvent *event)
@@ -115,26 +119,12 @@ void Calcolatrice::eliminaFigura_pressed()
             errorPrint("vuoto");
     else if(pS!=0 && pS->isSelected())
     {
-        if(msg)
-            delete msg;
-        msg = new QMessageBox;
-        msg->setIcon(QMessageBox::Critical);
-        msg->setWindowTitle("Elimina Figura");
-        msg->setText("Sei sicuro di eliminare la figura selezionata?");
-        msg->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-        msg->setButtonText(QMessageBox::Yes, tr("Si"));
-        msg->setDefaultButton(QMessageBox::No);
-        setEnabled(false); // disabilito la qdialog principale
-        int i = msg->exec();
-        if(i == QMessageBox::Yes)
+        if(ct->c_eliminaFigura(pS->getNome()))
         {
-            ct->c_eliminaFigura(pS->getNome());
             elimina(pS->getNome());
             ui->labRisultati->clear();
-            setEnabled(true);
+            pS=0;
         }
-        else
-            setEnabled(true);
     }
     else
         errorPrint("seleziona");
@@ -144,30 +134,12 @@ void Calcolatrice::eliminaTutto_pressed()
 {
     if(list.isEmpty())
             errorPrint("vuoto");
-    else
+    else if(ct->c_eliminaTutto())
     {
-        if(msg)
-            delete msg;
-        msg=new QMessageBox();
-        msg->setIcon(QMessageBox::Critical);
-        msg->setWindowTitle("Elimina figure");
-        msg->setText("Sei sicuro di eliminare tutte le figure?");
-        msg->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-        msg->setButtonText(QMessageBox::Yes, tr("Si"));
-        msg->setDefaultButton(QMessageBox::Yes);
-        setEnabled(false);
-        int i = msg->exec();
-        if(i == QMessageBox::Yes)
-        {
-            pS=0;
-            ct->c_eliminaTutto();
-            eliminaList();
-            ui->labRisultati->clear();
-            ui->Grafici->setCurrentIndex(0);
-            setEnabled(true);
-        }
-        else
-            setEnabled(true);
+        deseleziona(); // nel caso in cui avevo selezionato un poligono
+        ui->labRisultati->clear();
+        eliminaList(); // elimino la lista di poligoniC*
+        ui->Grafici->setCurrentIndex(0);
     }
 }
 
@@ -177,7 +149,9 @@ void Calcolatrice::inserisciVertice_pressed()
         errorPrint("vuoto");
     else if(pS!=0 && pS->isSelected())
     {
-        ct->c_inserisciVertice(pS->getNome());
+        QString nome = pS->getNome();
+        deseleziona();
+        ct->c_inserisciVertice(nome);
     }
     else
         errorPrint("seleziona");
@@ -189,7 +163,9 @@ void Calcolatrice::eliminaVertice_pressed()
         errorPrint("vuoto");
     else if(pS!=0 && pS->isSelected())
     {
-        ct->c_eliminaVertice(pS->getNome());
+        QString nome = pS->getNome();
+        deseleziona();
+        ct->c_eliminaVertice(nome);
     }
     else
         errorPrint("seleziona");
@@ -201,8 +177,8 @@ void Calcolatrice::modificaInfo_pressed()
         errorPrint("vuoto");
     else if(pS!=0 && pS->isSelected())
     {
-        ui->labRisultati->clear();
-        ct->c_modificaInfo(pS->getNome());
+        ui->labRisultati->clear(); // lo devo aggiornare
+        ct->c_modificaInfo(pS->getNome()); // modifica l'info e lo riaggiorna
     }
     else
         errorPrint("seleziona");
@@ -280,7 +256,13 @@ void Calcolatrice::Apotema_pressed()
     else if(pS!=0 && pS->isSelected())
     {
         double s = ct->c_getApotema(pS->getNome());
-        ui->labRisultati->setText(QString::number(s));
+        if(s>-1)
+            ui->labRisultati->setText(QString::number(s));
+        else
+        {
+            ui->labRisultati->clear();
+            deseleziona();
+        }
     }
     else
         errorPrint("seleziona");
@@ -318,16 +300,10 @@ void Calcolatrice::seleziona(poligoniC *&pC)
         }
         else if(pC->getPol().size() == 4) // quadrilatero o >
         {
-//            if(pC->getPol) // quadrato
-//                attivo getApotema
-//            {}
-//            else
-//            {
-                ui->Grafici->setCurrentIndex(1);
-                ui->eliminaVertice->setEnabled(true);
-                ui->inserisciVertice->setEnabled(false);
-                ui->Apotema->setEnabled(false);
-//            }
+            ui->Grafici->setCurrentIndex(1);
+            ui->eliminaVertice->setEnabled(true);
+            ui->inserisciVertice->setEnabled(false);
+            ui->Apotema->setEnabled(true);
         }
         ct->c_stampaFigura(pC->getNome());
     }
@@ -367,11 +343,18 @@ void Calcolatrice::addQuadrato(poligoniC *pC)
 
 void Calcolatrice::infoPrint(QString s) const
 {
-//    if(s.length() > ui->labRisultati->)  SCROLL
-
     ui->labRisultati->setStyleSheet("background-color: rgb(255, 255, 255); "
                                     "padding-left: 5px;");
-    ui->labRisultati->setText(s);
+    if(s.length() > 95) // due righe
+    {
+        ui->labRisultati->setFont(QFont("Ubuntu", 12));
+        ui->labRisultati->setText(s);
+    }
+    else
+    {
+        ui->labRisultati->setFont(QFont("Ubuntu", 14));
+        ui->labRisultati->setText(s);
+    }
 }
 
 void Calcolatrice::errorPrint(QString s) const

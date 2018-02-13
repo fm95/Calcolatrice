@@ -14,7 +14,7 @@ GScene::~GScene()
     QList<QGraphicsItem *> l = items();
     for(int i=0; i<l.size(); ++i)
         delete l.takeAt(i);
-    clear();
+    clear(); // rimuove tutti i poligoni disegnati
     destroyed();
 }
 

@@ -9,6 +9,7 @@
 
 class GScene;
 
+// Assi del piano cartesiano
 class Assi : public QGraphicsLineItem
 {
 public:
@@ -18,7 +19,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) override;
 
 private:
-    GScene* sc;
+    GScene* sc; // scene su cui disegnare gli assi
 
     QLineF AsseX;
     QLineF AsseY;

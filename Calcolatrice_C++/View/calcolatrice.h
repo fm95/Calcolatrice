@@ -9,14 +9,6 @@
 #include <QCloseEvent>
 #include <QGraphicsView>
 
-#include "poligonic.h"
-#include "Controller/graphcontroller.h"
-#include "insertfigura.h"
-#include "Model/poligonoconvesso.h"
-#include "gscene.h"
-#include "insertfigura.h"
-#include "gview.h"
-
 class GView;
 class GraphController;
 class insertFigura;
@@ -69,9 +61,7 @@ private slots:
 
 private:
     Ui::Calcolatrice *ui;
-
     GraphController *ct; // controller
-    QMessageBox* msg; // messaggio info
 
     QVBoxLayout lt; // triangolo
     GView *vT;

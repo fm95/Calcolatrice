@@ -18,7 +18,7 @@ public:
 
     void modInfo(QString, unsigned int, double);
     void insertVertice(QString, Vertice&);
-    void deleteVertice(QString, unsigned int);
+    void eliminaVertice(QString vecchio, QString nuovo, unsigned int);
 
     double getMax(QString) const;
     double getMin(QString) const;
@@ -27,6 +27,7 @@ public:
     double getSottrazione(QString) const;
     double getApotema(QString) const;
 
+    bool isRegolare(QString) const;
     bool nomeUnico(QString) const;
     PoligonoConvesso*& getPoligono(QString);
 

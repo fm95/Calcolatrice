@@ -40,7 +40,9 @@ void Rettangolo::print(std::ostream &os) const
     {
         os<<"("<<Vertici[i].Punto::getX()<<","<<Vertici[i].Punto::getY()<<") ";
         os<<Vertici[i].getInfo();
-        i!=3? os<<" > " : os<<"";
+        os<<" > ";
+        os<<getLato(Vertici[i].getInfo());
+        i!=3 ? os<<" > " : os<<"";
     }
 }
 

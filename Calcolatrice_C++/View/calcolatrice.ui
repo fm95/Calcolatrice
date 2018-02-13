@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>760</width>
-    <height>746</height>
+    <width>761</width>
+    <height>751</height>
    </rect>
   </property>
   <property name="font">
@@ -103,71 +103,11 @@ QTabBar::tab  {
     </widget>
    </widget>
   </widget>
-  <widget class="QLabel" name="Risultato">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>610</y>
-     <width>91</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Ubuntu</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(202, 202, 202);
-
-border: 0.5px solid black;
-
-border-radius: 2px;</string>
-   </property>
-   <property name="text">
-    <string>Risultato</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="labRisultati">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>610</y>
-     <width>641</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Ubuntu</family>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(100, 100, 100);
-
-padding-left: 5px;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-   </property>
-   <property name="margin">
-    <number>0</number>
-   </property>
-  </widget>
   <widget class="QPushButton" name="Somma">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>690</y>
+     <y>700</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -192,7 +132,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>650</y>
+     <y>660</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -208,7 +148,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>650</y>
+     <y>660</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -254,7 +194,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>650</y>
+     <y>660</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -270,7 +210,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>690</y>
+     <y>700</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -303,6 +243,17 @@ padding-left: 5px;</string>
    <property name="text">
     <string>Inserisci Figura</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <activeon>:/Icone/inserisci.png</activeon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>22</width>
+     <height>22</height>
+    </size>
+   </property>
    <property name="autoDefault">
     <bool>false</bool>
    </property>
@@ -317,7 +268,18 @@ padding-left: 5px;</string>
     </rect>
    </property>
    <property name="text">
-    <string>Elimina Figura</string>
+    <string> Elimina Figura</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <activeon>:/Icone/delete.png</activeon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -333,7 +295,18 @@ padding-left: 5px;</string>
     </rect>
    </property>
    <property name="text">
-    <string>Elimina tutto</string>
+    <string> Elimina tutto</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <activeon>:/Icone/deleteAll.png</activeon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>25</width>
+     <height>25</height>
+    </size>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -343,7 +316,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>690</y>
+     <y>700</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -368,7 +341,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>690</y>
+     <y>700</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -393,7 +366,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>510</x>
-     <y>690</y>
+     <y>700</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -418,7 +391,7 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>640</x>
-     <y>690</y>
+     <y>700</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -437,6 +410,52 @@ padding-left: 5px;</string>
    </property>
    <property name="default">
     <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labRisultati">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>610</y>
+     <width>741</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>2</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>Risultati operazioni</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-color: rgb(100, 100, 100);
+
+padding-left: 5px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::RichText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="margin">
+    <number>0</number>
    </property>
   </widget>
  </widget>

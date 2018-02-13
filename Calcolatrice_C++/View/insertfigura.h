@@ -35,11 +35,12 @@ private:
     Ui::insertFigura *ui;
     GraphController *ct; // controller
 
-    vector<Vertice> buildV;
+    vector<Vertice> buildV; // vertici del nuovo poligono
     double pos = -1; // posizione in cui eliminare o modificare
     double inf = -1; // nuovo campo info
+    QString Nome = ""; // nome della figura da cambiare
 
-    bool checkNome();
+    bool checkNome(); // controlli sugli input del form
     bool checknLati();
     bool checkVertice();
 };

@@ -1,4 +1,6 @@
 #include "graphcontroller.h"
+#include "View/poligonic.h"
+
 
 GraphController::GraphController(Calcolatrice *c) :
     dati(new Dati()),
@@ -15,6 +17,34 @@ void GraphController::c_inserisciFigura()
 {
     calc->setDisabled(true);
     ins = new insertFigura(this);
+}
+
+void GraphController::c_eliminaV(QString vecchio, QString nuovo, unsigned int pos)
+{
+    try
+    {
+        dati->eliminaVertice(vecchio, nuovo, pos);
+        PoligonoConvesso *newP =  dati->getPoligono(nuovo); // alias di puntatore
+        vector<Vertice> &v = newP->getVertici(); // riferimento
+
+        QPolygonF f; // poligono da disegnare
+        for(unsigned int i=0; i<v.size(); ++i)
+            f << QPointF(v[i].Punto::getX(), v[i].Punto::getY());
+
+        c_costruisciQp(*newP, nuovo, f); // costruisce il QPolygonF da stampare
+    }
+    catch(const std::invalid_argument &i)
+    {
+        QMessageBox warning;
+        warning.setIcon(QMessageBox::Critical);
+        warning.setWindowTitle("Impossibile creare la nuova figura");
+        warning.setText("I vertici non formano un poligono convesso!");
+        warning.setStandardButtons(QMessageBox::Ok);
+        warning.setDefaultButton(QMessageBox::Ok);
+        warning.exec();
+
+//        calc->errorPrint(QString::fromStdString(i.what()));
+    }
 }
 
 // Inserisce nuova figura
@@ -46,15 +76,51 @@ void GraphController::c_addFigura(QString n, const vector<Vertice> &v)
 }
 
 // Elimina una figura
-void GraphController::c_eliminaFigura(QString nome)
+bool GraphController::c_eliminaFigura(QString nome)
 {
-    dati->eliminaFigura(nome);
+    QMessageBox warning;
+    warning.setIcon(QMessageBox::Critical);
+    warning.setWindowTitle("Elimina Figura");
+    warning.setText("Sei sicuro di eliminare la figura selezionata?");
+    warning.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    warning.setDefaultButton(QMessageBox::No);
+    c_enabledQd(false);
+    int i = warning.exec();
+    if(i == QMessageBox::Yes)
+    {
+        dati->eliminaFigura(nome);
+        c_enabledQd(true);
+        return true;
+    }
+    else
+    {
+        c_enabledQd(true);
+        return false;
+    }
 }
 
 // Rimuovi tutte le figure
-void GraphController::c_eliminaTutto()
+bool GraphController::c_eliminaTutto()
 {
-    dati->eliminaTutto();
+    QMessageBox warning;
+    warning.setIcon(QMessageBox::Critical);
+    warning.setWindowTitle("Elimina tutto");
+    warning.setText("Sei sicuro di eliminare tutte le figure?");
+    warning.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    warning.setDefaultButton(QMessageBox::No);
+    c_enabledQd(false);
+    int i = warning.exec();
+    if(i == QMessageBox::Yes)
+    {
+        dati->eliminaTutto();
+        c_enabledQd(true);
+        return true;
+    }
+    else
+    {
+        c_enabledQd(true);
+        return false;
+    }
 }
 
 // Inserisce un nuovo vertice in una nuova figura
@@ -65,9 +131,10 @@ void GraphController::c_inserisciVertice(QString nome)
 }
 
 // Elimina un vertice
-void GraphController::c_eliminaVertice(QString)
+void GraphController::c_eliminaVertice(QString nome)
 {
-
+    calc->setDisabled(true);
+    ins = new insertFigura(1, nome, this);
 }
 
 // Modifica l'info di un vertice di una figura
@@ -98,7 +165,6 @@ double GraphController::c_getAVG(QString nome) const
     return dati->getAVG(nome);
 }
 
-// Restituisce la somma dei campi info di una figura
 double GraphController::c_getSomma(QString nome) const
 {
     return dati->getSomma(nome);
@@ -111,7 +177,24 @@ double GraphController::c_getSottrazione(QString nome) const
 
 double GraphController::c_getApotema(QString nome) const
 {
-     return dati->getApotema(nome);
+    if(dati->getPoligono(nome)->isRegolare())
+        return dati->getApotema(nome);
+    else
+    {
+        QMessageBox warning;
+        warning.setIcon(QMessageBox::Critical);
+        warning.setWindowTitle("Impossibile calcolare apotema");
+        warning.setText("Non si puo' calcolare l'apotema di un poligono non regolare!");
+        warning.setStandardButtons(QMessageBox::Ok);
+        warning.setDefaultButton(QMessageBox::Ok);
+        warning.exec();
+        return -1;
+    }
+}
+
+bool GraphController::c_isRegolare(QString nome) const
+{
+    return dati->isRegolare(nome);
 }
 
 void GraphController::c_stampaFigura(QString n)
@@ -119,10 +202,10 @@ void GraphController::c_stampaFigura(QString n)
     calc->infoPrint(QString::fromStdString(dati->getPoligono(n)->toString()));
 }
 
-void GraphController::c_enabledQd(bool)
+void GraphController::c_enabledQd(bool b)
 {
     if(calc)
-        calc->setEnabled(true);
+        calc->setEnabled(b);
 }
 
 PoligonoConvesso*& GraphController::c_getPoligono(QString n) const

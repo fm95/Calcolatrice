@@ -31,8 +31,8 @@ public:
 
     void modificaInfo(unsigned int, double); // pos & nuovoInfo
     bool infoUguali()const;
-    PoligonoConvesso* inserisciVertice(QString, Vertice &);
-    PoligonoConvesso* eliminaVertice(QString, unsigned int);
+    PoligonoConvesso* inserisciVertice(QString, Vertice &) const;
+    PoligonoConvesso* eliminaVertice(QString, unsigned int) const;
     double Max()const;
     double Min()const;
     double AVG()const;

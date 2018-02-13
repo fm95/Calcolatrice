@@ -55,7 +55,9 @@ void PoligonoConvesso::print(std::ostream &stream) const
         stream<<calcolaAngolo(Vertici, i);
         stream<<"\u00B0]";
 
-        i!=(Vertici.size()-1)? stream<<" > " : stream<<"";
+        stream<<" > ";
+        stream<<getLato(Vertici[i].getInfo());
+        i!=(Vertici.size()-1) ? stream<<" > " : stream<<"";
     }
 }
 
@@ -212,7 +214,7 @@ PoligonoConvesso* PoligonoConvesso::costruisci(QString s, const vector<Vertice> 
     return nullptr;
 }
 
-PoligonoConvesso* PoligonoConvesso::inserisciVertice(QString nome, Vertice& v)
+PoligonoConvesso* PoligonoConvesso::inserisciVertice(QString nome, Vertice& v) const
 { // per ora si puo' creare al massimo un quadrilatero, altrimenti va estesa la gerarchia
     if(Vertici.size()<4)
     {
@@ -230,7 +232,7 @@ PoligonoConvesso* PoligonoConvesso::inserisciVertice(QString nome, Vertice& v)
     return nullptr;
 }
 
-PoligonoConvesso* PoligonoConvesso::eliminaVertice(QString nome, unsigned int pos)
+PoligonoConvesso* PoligonoConvesso::eliminaVertice(QString nome, unsigned int pos) const
 { // si puo' eliminare solo da un poligono con almeno 4 vertici
     if(Vertici.size()>3)
     {

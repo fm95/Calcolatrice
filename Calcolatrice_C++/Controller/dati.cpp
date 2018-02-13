@@ -2,7 +2,7 @@
 
 Dati::~Dati()
 {
-    eliminaTutto();
+    eliminaTutto(); // elimino tutta la lista
 }
 
 void Dati::costruisci(QString s, const vector<Vertice> &v)
@@ -12,20 +12,25 @@ void Dati::costruisci(QString s, const vector<Vertice> &v)
     else if(v.size()==4)
     {
         Quadrilatero* q = new Quadrilatero(s, v);
-        if(!q->isEquiangolo())
+        if(!q->isEquiangolo()) // quadrialatero
             list.push_front(q);
-        else if(!q->isEquilatero() && q->isEquiangolo())
+        else if(!q->isEquilatero() && q->isEquiangolo()) // rettangolo
         {
             list.push_front(new Rettangolo(s, v));
             delete q;
         }
-        else if(q->isEquilatero() && q->isEquiangolo())
+        else if(q->isEquilatero() && q->isEquiangolo()) // quadrato
         {
             list.push_front(new Quadrato(s, v));
             delete q;
         }
     }
 }
+/* I nuovi poligoni vengono inseriti all'inizio della list (push_front) perche' molto probabilmente
+ * le operazioni dell'utente si svolgeranno proprio sull'ultimo inserito; inserendo all'inizio, e
+ * cercando un poligono attraverso il suo nome, la ricerca avra' subito successo, senza scorrere
+ * tutta la lista.
+*/
 
 void Dati::eliminaFigura(QString nome)
 {
@@ -61,29 +66,21 @@ void Dati::modInfo(QString nome, unsigned int pos, double info)
 
 void Dati::insertVertice(QString nome, Vertice &v)
 {
-    if(!list.empty())
-    {
-        auto it=list.begin();
-        while((*it)->getNome()!=nome && it!=list.end())
-        { ++it; }
-//        PoligonoConvesso *aux = (*it)->inserisciVertice(nome, v);
-//        list.push_front(aux);
-
-        list.push_front((*it)->inserisciVertice(nome, v));
-    }
+    auto it=list.begin();
+    while((*it)->getNome()!=nome && it!=list.end())
+    { ++it; }
+    list.push_front((*it)->inserisciVertice(nome, v));
 }
 
-void Dati::deleteVertice(QString nome, unsigned int pos)
+void Dati::eliminaVertice(QString vecchio, QString nuovo, unsigned int pos)
 {
-    if(!list.empty())
+    for(auto it=list.begin(); it!=list.end(); ++it)
     {
-        auto it=list.begin();
-        while((*it)->getNome()!=nome && it!=list.end())
-        { ++it; }
-//        PoligonoConvesso *aux = (*it)->eliminaVertice(nome, pos);
-//        list.push_front(aux);
-
-        list.push_front((*it)->eliminaVertice(nome, pos));
+        if( (*it)->getNome() == vecchio )
+        {
+            list.push_front((*it)->eliminaVertice(nuovo, pos));
+            return;
+        }
     }
 }
 
@@ -131,19 +128,25 @@ double Dati::getApotema(QString nome) const
 {
     for(auto it=list.constBegin(); it!=list.constEnd(); ++it)
     {
-        if((*it)->getNome()!=nome)
-        {
-            Triangolo *t = dynamic_cast<Triangolo*>(*it);
-            if(t) // se e' regolare viene controllato nel controller
-                return t->getApotema();
-            else
-            {
-                Quadrato *q = dynamic_cast<Quadrato*>(*it);
-                if(q)
-                    return q->getApotema();
-            }
+        if((*it)->getNome()==nome)
+        { // se il poligono e' regolare viene controllato nel controller
+            if((*it)->getNumLati()==3)
+                return (static_cast<Triangolo*>(*it))->getApotema();
+            else if((*it)->getNumLati()==4)
+                return (static_cast<Quadrato*>(*it))->getApotema();
         }
     }
+    return -1;
+}
+
+bool Dati::isRegolare(QString nome) const
+{
+    for(auto it=list.constBegin(); it!=list.constEnd(); ++it)
+    {
+        if((*it)->getNome() == nome)
+            return (*it)->isRegolare();
+    }
+    return true;
 }
 
 bool Dati::nomeUnico(QString nome) const
@@ -158,8 +161,7 @@ bool Dati::nomeUnico(QString nome) const
 
 PoligonoConvesso* &Dati::getPoligono(QString nome)
 {
-    bool trovato=false;
-    for(auto it=list.begin(); !trovato && it!=list.end(); ++it)
+    for(auto it=list.begin(); it!=list.end(); ++it)
     {
         if((*it)->getNome() == nome)
             return (*it);

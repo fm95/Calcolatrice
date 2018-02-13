@@ -1,8 +1,9 @@
 package Esempio;
-
 import java.util.ArrayList;
 
+import punto.*;
 import vertice.*;
+import Figura.*;
 import PoligoniConvessi.*;
 import Eccezioni.*;
 

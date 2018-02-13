@@ -21,11 +21,12 @@ public:
     void c_inserisciFigura();
     void c_addFigura(QString, const vector<Vertice> &);
 
-    void c_eliminaFigura(QString);
-    void c_eliminaTutto();
+    bool c_eliminaFigura(QString);
+    bool c_eliminaTutto();
 
     void c_inserisciVertice(QString);
     void c_eliminaVertice(QString);
+    void c_eliminaV(QString, QString, unsigned int);
     void c_modificaInfo(QString);
     void c_aggiornaInfo(QString, unsigned int, double);
 
@@ -36,6 +37,7 @@ public:
     double c_getSottrazione(QString) const;
     double c_getApotema(QString) const;
 
+    bool c_isRegolare(QString) const;
     void c_stampaFigura(QString);
     void c_enabledQd(bool);
     bool c_getUnicoNome(QString)const;

@@ -2,9 +2,9 @@
 #include <QApplication>
 
 #include "Model/triangolo.h"
-#include "Model/quadrilatero.h"
 #include "Model/quadrato.h"
-#include "Model/rettangolo.h"
+
+// Francesco Minna 1103073
 
 int main(int argc, char *argv[])
 {

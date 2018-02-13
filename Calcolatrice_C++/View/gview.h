@@ -2,7 +2,6 @@
 #define GVIEW_H
 
 #include <QGraphicsView>
-#include "poligonic.h"
 
 class Calcolatrice;
 class GScene;

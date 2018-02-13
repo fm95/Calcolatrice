@@ -18,18 +18,17 @@ public:
     Punto(double, double);
     virtual ~Punto() = default;
 
-    double getX()const;
-    double getY()const;
+    double getX() const;
+    double getY() const;
     void setX(double);
     void setY(double);
 
-    virtual bool operator==(const Punto&)const;
-    virtual bool operator!=(const Punto&)const;
+    virtual bool operator==(const Punto&) const;
+    virtual bool operator!=(const Punto&) const;
     virtual string toString() const;
 
 private:
     double x, y;
-
 };
 
 double distanza(const Punto&, const Punto&);

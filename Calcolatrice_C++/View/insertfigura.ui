@@ -130,7 +130,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="toolTip">
     <string>Annulla inserimento</string>
@@ -220,6 +220,9 @@
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="toolTip">
     <string>Il nome deve iniziare con una lettera. Max 14 caratteri.</string>
    </property>
@@ -236,7 +239,7 @@
     <number>14</number>
    </property>
    <property name="placeholderText">
-    <string>nome-123</string>
+    <string>nome123</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -420,10 +423,10 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="toolTip">
-    <string>Annulla inserimento</string>
+    <string>Conferma </string>
    </property>
    <property name="accessibleName">
     <string/>
@@ -487,6 +490,9 @@
      <width>28</width>
      <height>30</height>
     </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>
