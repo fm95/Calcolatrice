@@ -32,9 +32,9 @@ public:
 
     double c_getMax(QString) const;
     double c_getMin(QString) const;
-    double c_getAVG(QString) const;
-    double c_getSomma(QString) const;
-    double c_getSottrazione(QString) const;
+    QString c_getAVG(QString) const;
+    QString c_getSomma(QString) const;
+    QString c_getSottrazione(QString) const;
     double c_getApotema(QString) const;
 
     bool c_isRegolare(QString) const;

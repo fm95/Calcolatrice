@@ -191,7 +191,7 @@ void Calcolatrice::Max_pressed()
     else if(pS!=0 && pS->isSelected())
     {
         double s = ct->c_getMax(pS->getNome());
-        ui->labRisultati->setText(QString::number(s));
+        ui->labRisultati->setText(QString("Campo info piu' grande = " + QString::number(s)));
     }
     else
         errorPrint("seleziona");
@@ -204,7 +204,7 @@ void Calcolatrice::Min_pressed()
     else if(pS!=0 && pS->isSelected())
     {
         double s = ct->c_getMin(pS->getNome());
-        ui->labRisultati->setText(QString::number(s));
+        ui->labRisultati->setText(QString("Campo info piu' piccolo = " + QString::number(s)));
     }
     else
         errorPrint("seleziona");
@@ -216,8 +216,8 @@ void Calcolatrice::AVG_pressed()
         errorPrint("vuoto");
     else if(pS!=0 && pS->isSelected())
     {
-        double s = ct->c_getAVG(pS->getNome());
-        ui->labRisultati->setText(QString::number(s));
+        QString s = ct->c_getAVG(pS->getNome());
+        ui->labRisultati->setText(s);
     }
     else
         errorPrint("seleziona");
@@ -229,8 +229,8 @@ void Calcolatrice::Somma_pressed()
         errorPrint("vuoto");
     else if(pS!=0 && pS->isSelected())
     {
-        double s = ct->c_getSomma(pS->getNome());
-        ui->labRisultati->setText(QString::number(s));
+        QString s = ct->c_getSomma(pS->getNome());
+        ui->labRisultati->setText(s);
     }
     else
         errorPrint("seleziona");
@@ -242,8 +242,8 @@ void Calcolatrice::Sottrazione_pressed()
         errorPrint("vuoto");
     else if(pS!=0 && pS->isSelected())
     {
-        double s = ct->c_getSottrazione(pS->getNome());
-        ui->labRisultati->setText(QString::number(s));
+        QString s = ct->c_getSottrazione(pS->getNome());
+        ui->labRisultati->setText(s);
     }
     else
         errorPrint("seleziona");
@@ -257,7 +257,7 @@ void Calcolatrice::Apotema_pressed()
     {
         double s = ct->c_getApotema(pS->getNome());
         if(s>-1)
-            ui->labRisultati->setText(QString::number(s));
+            ui->labRisultati->setText(QString("Apotema: " + QString::number(s)));
         else
         {
             ui->labRisultati->clear();

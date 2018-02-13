@@ -40,7 +40,7 @@ unsigned int Triangolo::getNumLati() const
 double Triangolo::getApotema() const
 { // raggio della circonferenza inscritta nel triangolo
     if(isRegolare())
-        return 0.289*getLato(Vertici[0].getInfo());
+        return (getArea()*2)/getPerimetro();
     else
         throw std::invalid_argument("Non si puo' calcolare l'apotema di un triangolo irregolare!");
 }
@@ -77,11 +77,6 @@ bool Triangolo::isAcutangolo()const
     return (calcolaAngolo(Vertici,0)<90
        && calcolaAngolo(Vertici,1)<90
             && calcolaAngolo(Vertici,2)<90);
-}
-
-bool Triangolo::isRegolare() const
-{
-
 }
 
 bool Triangolo::operator<(const Figura &f) const

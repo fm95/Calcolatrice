@@ -21,7 +21,6 @@ public:
     bool isRettangolo() const;
     bool isOttusangolo() const;
     bool isAcutangolo() const;
-    bool isRegolare() const override;
 
     bool operator<(const Figura&) const override;
     bool operator>(const Figura&) const override;

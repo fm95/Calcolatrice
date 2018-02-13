@@ -26,7 +26,7 @@ double Quadrato::getLato() const
 
 double Quadrato::getApotema() const
 {
-    return 0.5*getLato();
+    return (getArea()*2)/getPerimetro();
 }
 
 ostream &operator<<(ostream &os, const Quadrato &q)

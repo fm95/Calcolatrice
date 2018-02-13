@@ -149,9 +149,11 @@ int PoligonoConvesso::getNumDiagonali() const
 
 bool PoligonoConvesso::isEquiangolo() const
 {
+    double primo = calcolaAngolo(Vertici,0);
     for(unsigned int i=1; i<Vertici.size(); ++i)
     {
-        if(calcolaAngolo(Vertici,0) != calcolaAngolo(Vertici,i))
+
+        if(primo != calcolaAngolo(Vertici,i))
             return false;
     }
     return true;
@@ -291,16 +293,16 @@ double PoligonoConvesso::AVG() const
 
 double PoligonoConvesso::Somma() const
 {
-    double m=0;
-    for(unsigned int i=0; i<Vertici.size(); ++i)
+    double m = Vertici[0].getInfo();;
+    for(unsigned int i=1; i<Vertici.size(); ++i)
         m += Vertici[i].getInfo();
     return m;
 }
 
 double PoligonoConvesso::Sottrazione() const
 {
-    double m=0;
-    for(unsigned int i=0; i<Vertici.size(); ++i)
+    double m = Vertici[0].getInfo();;
+    for(unsigned int i=1; i<Vertici.size(); ++i)
         m -= Vertici[i].getInfo();
     return m;
 }

@@ -27,7 +27,7 @@ public:
     int getNumDiagonali() const;
     bool isEquiangolo() const;
     bool isEquilatero() const;
-    virtual bool isRegolare() const;
+    bool isRegolare() const;
 
     void modificaInfo(unsigned int, double); // pos & nuovoInfo
     bool infoUguali()const;
