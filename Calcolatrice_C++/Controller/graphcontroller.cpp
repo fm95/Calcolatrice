@@ -150,6 +150,17 @@ void GraphController::c_aggiornaInfo(QString nome, unsigned int pos, double info
     c_stampaFigura(nome);
 }
 
+void GraphController::c_Diagonale(QString nome)
+{
+    calc->setDisabled(true);
+    ins = new insertFigura(nome, 5, 5, this);
+}
+
+void GraphController::c_getDiagonale(QString nome, unsigned int pos) const
+{
+    calc->infoPrint(QString("Diagonale = " + QString::number(dati->getDiagonale(nome, pos))));
+}
+
 double GraphController::c_getMax(QString nome) const
 {
     return dati->getMax(nome);

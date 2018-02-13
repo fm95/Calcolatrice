@@ -211,7 +211,7 @@ QTabBar::tab  {
     <rect>
      <x>260</x>
      <y>700</y>
-     <width>111</width>
+     <width>71</width>
      <height>41</height>
     </rect>
    </property>
@@ -222,7 +222,7 @@ QTabBar::tab  {
     <string comment="Somma campi info" extracomment="Somma campi info"/>
    </property>
    <property name="text">
-    <string>Max Info</string>
+    <string>Max</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -340,9 +340,9 @@ QTabBar::tab  {
   <widget class="QPushButton" name="MinInfo">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>340</x>
      <y>700</y>
-     <width>121</width>
+     <width>81</width>
      <height>41</height>
     </rect>
    </property>
@@ -353,7 +353,7 @@ QTabBar::tab  {
     <string comment="Somma campi info" extracomment="Somma campi info"/>
    </property>
    <property name="text">
-    <string>Min Info</string>
+    <string>Min</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -365,9 +365,9 @@ QTabBar::tab  {
   <widget class="QPushButton" name="AVGInfo">
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>430</x>
      <y>700</y>
-     <width>121</width>
+     <width>71</width>
      <height>41</height>
     </rect>
    </property>
@@ -378,7 +378,7 @@ QTabBar::tab  {
     <string comment="Somma campi info" extracomment="Somma campi info"/>
    </property>
    <property name="text">
-    <string>AVG Info</string>
+    <string>AVG</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
@@ -456,6 +456,22 @@ padding-left: 5px;</string>
    </property>
    <property name="margin">
     <number>0</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Diagonale">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>700</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Diagonale</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

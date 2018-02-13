@@ -35,6 +35,8 @@ public:
     QString c_getAVG(QString) const;
     QString c_getSomma(QString) const;
     QString c_getSottrazione(QString) const;
+    void c_Diagonale(QString);
+    void c_getDiagonale(QString, unsigned int) const;
     double c_getApotema(QString) const;
 
     bool c_isRegolare(QString) const;

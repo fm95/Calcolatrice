@@ -124,6 +124,18 @@ double Dati::getSottrazione(QString nome) const
     return (*it)->Sottrazione();
 }
 
+double Dati::getDiagonale(QString nome, unsigned int pos) const
+{
+    for(auto it=list.constBegin(); it!=list.constEnd(); ++it)
+    {
+        if((*it)->getNome() == nome)
+        {
+            return dynamic_cast<Quadrilatero*>(*it)->getDiagolale(pos);
+        }
+    }
+    return -1;
+}
+
 double Dati::getApotema(QString nome) const
 {
     for(auto it=list.constBegin(); it!=list.constEnd(); ++it)

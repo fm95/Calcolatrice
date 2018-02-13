@@ -57,6 +57,7 @@ private slots:
     void AVG_pressed();
     void Somma_pressed();
     void Sottrazione_pressed();
+    void Diagonale_pressed();
     void Apotema_pressed();
 
 private:

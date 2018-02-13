@@ -123,6 +123,41 @@ insertFigura::insertFigura(QString nome, double, GraphController *g, QWidget *pa
     show();
 }
 
+// Diagonale
+insertFigura::insertFigura(QString nome, double, double, GraphController *g, QWidget *parent) :
+    ui(new Ui::insertFigura),
+    ct(g),
+    pos(0), inf(5)
+{
+    ui->setupUi(this);
+    setParent(parent);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setWindowTitle(QString("Calcola Diagonale"));
+    setFixedSize(430, 230);
+
+    buildV = ct->c_getVertici(nome); // copia
+
+    ui->i_Nome->setText(nome); // nome della figura, che non va modificato
+    ui->i_Nome->setReadOnly(true);
+
+    ui->i_nLati->setText(QString::number(buildV.size())); // # di vertici
+    ui->i_nLati->setReadOnly(true);
+
+    ui->i_X->setText(QString::number(buildV[pos].getX()));
+    ui->i_X->setReadOnly(true);
+    ui->i_Y->setText(QString::number(buildV[pos].getY()));
+    ui->i_Y->setReadOnly(true);
+    ui->i_Info->setText(QString::number(buildV[pos].getInfo()));
+    ui->i_Info->setReadOnly(true);
+    ui->Conferma->setText(QString("Calcola"));
+
+    connect(ui->Conferma, SIGNAL(pressed()), this, SLOT(Conferma_pressed()));
+    connect(ui->Avanti, SIGNAL(pressed()), this, SLOT(Avanti_pressed()));
+    connect(ui->Annulla, SIGNAL(pressed()), this, SLOT(close()));
+
+    show();
+}
+
 // Distruttore
 insertFigura::~insertFigura()
 {
@@ -151,6 +186,11 @@ void insertFigura::Conferma_pressed()
         }
         else
             ui->error->setText(QString("Inserisci un nuovo nome!"));
+    }
+    else if(inf==5) // diagonale
+    {
+        ct->c_getDiagonale(ui->i_Nome->text(), pos);
+        close();
     }
     else if(!ui->Avanti->isEnabled()) // ho inserito il nome, il #lati e tutti i vertici
     {

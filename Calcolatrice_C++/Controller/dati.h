@@ -25,6 +25,7 @@ public:
     double getAVG(QString) const;
     double getSomma(QString) const;
     double getSottrazione(QString) const;
+    double getDiagonale(QString, unsigned int) const;
     double getApotema(QString) const;
 
     bool isRegolare(QString) const;

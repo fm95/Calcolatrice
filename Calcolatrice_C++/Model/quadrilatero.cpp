@@ -44,15 +44,14 @@ unsigned int Quadrilatero::getNumLati() const
 {
     return numLati;
 }
-
 double Quadrilatero::getDiagolale(unsigned int v1) const
 {
     if(v1<Vertici.size())
     {
-        if(v1==Vertici.size()-1)
-            return distanza(Vertici[v1], Vertici[1]);
-        else if(v1==Vertici.size()-2)
+        if(v1==Vertici.size()-2)
             return distanza(Vertici[v1], Vertici[0]);
+        else if(v1==Vertici.size()-1)
+            return distanza(Vertici[v1], Vertici[1]);
         else
             return distanza(Vertici[v1], Vertici[v1+2]);
     }

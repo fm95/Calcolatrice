@@ -61,6 +61,7 @@ Calcolatrice::Calcolatrice(QWidget *parent) :
     connect(ui->AVGInfo, SIGNAL(pressed()), this, SLOT(AVG_pressed()));
     connect(ui->Somma, SIGNAL(pressed()), this, SLOT(Somma_pressed()));
     connect(ui->Sottrazione, SIGNAL(pressed()), this, SLOT(Sottrazione_pressed()));
+    connect(ui->Diagonale, SIGNAL(pressed()), this, SLOT(Diagonale_pressed()));
     connect(ui->Apotema, SIGNAL(pressed()), this, SLOT(Apotema_pressed()));
 
 }
@@ -98,12 +99,14 @@ void Calcolatrice::mousePressEvent(QMouseEvent *)
         ui->inserisciVertice->setEnabled(true);
         ui->eliminaVertice->setEnabled(false);
         ui->eliminaVertice->setToolTip("Il triangolo e' il poligono convesso piu' piccolo!");
+        ui->Diagonale->setEnabled(false);
     }
     else if(ui->Grafici->currentIndex() == 1)// quadrilateri
     {
         ui->eliminaVertice->setEnabled(true);
         ui->inserisciVertice->setEnabled(false);
         ui->inserisciVertice->setToolTip("Il poligono con 5 lati non e' supportato!");
+        ui->Diagonale->setEnabled(true);
     }
 }
 
@@ -244,6 +247,18 @@ void Calcolatrice::Sottrazione_pressed()
     {
         QString s = ct->c_getSottrazione(pS->getNome());
         ui->labRisultati->setText(s);
+    }
+    else
+        errorPrint("seleziona");
+}
+
+void Calcolatrice::Diagonale_pressed()
+{
+    if(list.isEmpty())
+        errorPrint("vuoto");
+    else if(pS!=0 && pS->isSelected())
+    {
+        ct->c_Diagonale(pS->getNome());
     }
     else
         errorPrint("seleziona");

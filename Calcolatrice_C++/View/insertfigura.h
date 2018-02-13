@@ -23,6 +23,7 @@ public:
     insertFigura(QString, GraphController *, QWidget *parent = 0); // Inserisce vertice
     insertFigura(unsigned int, QString, GraphController *, QWidget *parent = 0); // Elimina vertice
     insertFigura(QString, double i, GraphController *, QWidget *parent = 0); // Modifica info
+    insertFigura(QString, double i, double j, GraphController *, QWidget *parent = 0); // Diagonale
 
     ~insertFigura();
     void closeEvent(QCloseEvent *event);
