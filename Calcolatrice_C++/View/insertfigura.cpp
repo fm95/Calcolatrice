@@ -166,6 +166,7 @@ void insertFigura::Conferma_pressed()
 
 void insertFigura::Avanti_pressed()
 {
+    ui->error->clear();
     if(pos==-1 && inf==-1) // inserire nuova figura o nuovo vertice
     {
         checkNome();

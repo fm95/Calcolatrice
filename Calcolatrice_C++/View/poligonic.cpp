@@ -9,6 +9,7 @@ poligoniC::poligoniC(QString n, QPolygonF p, GScene *parent) :
 {
     setFlag(QGraphicsItem::ItemIsSelectable, true);
     setFlag(QGraphicsItem::ItemIsFocusable, true);
+    setFillRule(Qt::WindingFill);
 }
 
 QString poligoniC::getNome() const
@@ -30,6 +31,9 @@ void poligoniC::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidg
 {
     QPen pen(Qt::black);
     pen.setWidthF(0.8);
+    QBrush b(Qt::NoBrush);
+
+    painter->setBrush(b);
     painter->setPen(pen);
 
     painter->drawConvexPolygon(pol);

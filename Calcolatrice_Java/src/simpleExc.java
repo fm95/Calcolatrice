@@ -1,4 +1,3 @@
-package Eccezioni;
 
 public class simpleExc extends Exception {
 

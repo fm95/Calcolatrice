@@ -1,16 +1,10 @@
-package Esempio;
-import java.util.ArrayList;
 
-import punto.*;
-import vertice.*;
-import Figura.*;
-import PoligoniConvessi.*;
-import Eccezioni.*;
+import java.util.ArrayList;
 
 public final class Use {
 
-	// Usage example of the hierarchy
-	
+// Usage example of the hierarchy
+
 	public static void main(String[] args) {
 
 	    Punto p1 = new Punto(1, 1);
@@ -51,7 +45,7 @@ public final class Use {
 	        System.out.println("Area: " + t.getArea());
 	        System.out.println("Regolare? " + t.isRegolare());
 	        System.out.println("Rettangolo? " + t.isRettangolo());
-//	        System.err.println(t.getApotema()); // Exception: il triangolo non e' regolare
+//		        System.err.println(t.getApotema()); // Exception: il triangolo non e' regolare
 	    	
 	        Triangolo t2 = (Triangolo) t.clone();
 	        System.out.println(t.equals(t2 + "\n"));
@@ -63,13 +57,13 @@ public final class Use {
 	        System.out.println(q4);
 	        System.out.println("Area: " + q4.getArea());
 	        q4.modificaInfo(1, 3.5);
-//	        q4.modificaInfo(10, 3.5); // Exception: posizione troppo grande
+//		        q4.modificaInfo(10, 3.5); // Exception: posizione troppo grande
 	        System.out.println(q4); // con info modificato
 	        System.out.println("Equilatero? " + q4.isEquilatero());
 	        System.out.println("Media info: " + q4.AVG());
 	        System.out.println("Max info: " + q4.Max());
 	        System.out.println("Angolo vertice con info=3 : " + q4.getAngolo(3, -1)); // non passo la posizione
-//	        System.err.println(q4.getAngolo(3, 4)); // Exception: posizione >= Vertici.size
+//		        System.err.println(q4.getAngolo(3, 4)); // Exception: posizione >= Vertici.size
 	        System.out.println("Lato tra il vertice con info=1 e vertice successivo: " + q4.getLato(1, -1));
 	       
         // RETTANGOLO
@@ -82,7 +76,7 @@ public final class Use {
         	System.out.println(ret);
         	System.out.println(ret.getAngolo(1, 0)); // info=1 & pos=0
         	System.out.println(ret.getDiagolale(0, 2)); // tra il primo e il terzo vertice
-//        	System.out.println(ret.getDiagolale(0, 1)); // Eccezione: posizioni non valide
+//	        	System.out.println(ret.getDiagolale(0, 1)); // Eccezione: posizioni non valide
         	ret.setNome("Ciao");
         	System.out.println(ret);
         	System.out.println(ret.getArea());
@@ -119,3 +113,4 @@ public final class Use {
 	}
 
 }
+

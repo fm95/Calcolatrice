@@ -15,7 +15,7 @@ public:
     Vertice(double, double, double =0);
     Vertice(const Punto&, double =0);
 
-    double getInfo()const;
+    double getInfo() const;
     void setInfo(double i);
 
     bool operator==(const Punto&)const override;

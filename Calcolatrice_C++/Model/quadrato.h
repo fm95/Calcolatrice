@@ -14,7 +14,7 @@ public:
     double getArea() const override;
 
     double getLato()const; // overloading
-    double getApotema()const; // overloading
+    double getApotema()const;
 
 };
 

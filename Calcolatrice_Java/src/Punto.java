@@ -1,4 +1,3 @@
-package vertice;
 
 public class Punto{
 	private double x, y;
@@ -61,4 +60,3 @@ public class Punto{
 	}
 
 }
-

@@ -15,7 +15,7 @@ public:
     double getSommaAngoli() const override final;
     unsigned int getNumLati() const override final;
 
-    double getDiagolale(unsigned int, unsigned int) const; // pos1 & pos2
+    double getDiagolale(unsigned int) const; // pos e pos+2
 
     bool operator<(const Figura&) const override final;
     bool operator>(const Figura&) const override final;

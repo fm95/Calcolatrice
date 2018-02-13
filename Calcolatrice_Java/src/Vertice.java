@@ -1,8 +1,5 @@
-package vertice;
 
-import vertice.Punto;
-
-public class Vertice extends Punto{ 
+public class Vertice extends Punto {
 	private double info;
 	
 	public Vertice(Punto p, double info){
@@ -64,8 +61,3 @@ public class Vertice extends Punto{
 	}
 	
 }
-
-
-
-
-

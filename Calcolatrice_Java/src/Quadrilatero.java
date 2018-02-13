@@ -1,10 +1,5 @@
-package PoligoniConvessi;
 
 import java.util.ArrayList;
-
-import Eccezioni.simpleExc;
-
-import vertice.*;
 
 public class Quadrilatero extends PoligonoConvesso {
 	protected static final int numLati=4;

@@ -1,10 +1,5 @@
-package PoligoniConvessi;
 
 import java.util.ArrayList;
-
-import Figura.*;
-import vertice.*;
-import Eccezioni.*;
 
 public abstract class PoligonoConvesso extends Figura{
 	private static final int limiteVertici = 20;
@@ -170,8 +165,8 @@ public abstract class PoligonoConvesso extends Figura{
     public abstract double getSommaAngoli();
 	public abstract int getNumLati();
 	public abstract boolean equals(Object obj);
-//    public abstract double getPerimetro(); ereditati da figura
-//	  public abstract double getArea(); ereditati da figura
+//	    public abstract double getPerimetro(); ereditati da figura
+//		  public abstract double getArea(); ereditati da figura
     
 	public double getLato(double i1, int pos) throws simpleExc
 	{ // info & pos (se sono tutte uguali)
@@ -287,5 +282,5 @@ public abstract class PoligonoConvesso extends Figura{
     	}
     	return result;
 	}
-	
+		
 }

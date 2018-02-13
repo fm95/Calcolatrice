@@ -1,7 +1,6 @@
-package Figura;
 
-public abstract class Figura implements Cloneable{  //, operazioniFigura{
-	private static final int lunghezzaNome = 14;
+public abstract class Figura{  
+	private static final int maxLengthNome = 14;
 	protected String name;
 	
 	public Figura(String name){

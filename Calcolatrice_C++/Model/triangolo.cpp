@@ -76,7 +76,12 @@ bool Triangolo::isAcutangolo()const
 { // tutti gli angoli < 90 gradi
     return (calcolaAngolo(Vertici,0)<90
        && calcolaAngolo(Vertici,1)<90
-       && calcolaAngolo(Vertici,2)<90);
+            && calcolaAngolo(Vertici,2)<90);
+}
+
+bool Triangolo::isRegolare() const
+{
+
 }
 
 bool Triangolo::operator<(const Figura &f) const

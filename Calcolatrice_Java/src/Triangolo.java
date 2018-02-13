@@ -1,10 +1,5 @@
-package PoligoniConvessi;
 
 import java.util.ArrayList;
-
-import Eccezioni.simpleExc;
-import Figura.*;
-import vertice.*;
 
 public class Triangolo extends PoligonoConvesso{
 	protected static final int numLati=3;

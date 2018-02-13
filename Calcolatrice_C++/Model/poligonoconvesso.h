@@ -27,7 +27,7 @@ public:
     int getNumDiagonali() const;
     bool isEquiangolo() const;
     bool isEquilatero() const;
-    bool isRegolare() const;
+    virtual bool isRegolare() const;
 
     void modificaInfo(unsigned int, double); // pos & nuovoInfo
     bool infoUguali()const;
@@ -42,6 +42,7 @@ public:
     bool operator==(const PoligonoConvesso&) const;
     bool operator!=(const PoligonoConvesso&) const;
 
+    int WindingNumberInclusion(const Vertice&) const;
     vector<Vertice>& getVertici();
 
 protected:
@@ -52,9 +53,7 @@ protected:
 private:
     static unsigned int limiteVertici; // si puo' costruire un Poligono con al massimo 20 vertici
     static PoligonoConvesso* costruisci(QString, const vector<Vertice> &);
+    static double isLeft(const Vertice &, const Vertice &, const Vertice &);
 };
-
-int WindingNumberInclusion(const Vertice&, const vector<Vertice> &);
-double isLeft(const Vertice &, const Vertice &, const Vertice &);
 
 #endif // POLIGONO_H

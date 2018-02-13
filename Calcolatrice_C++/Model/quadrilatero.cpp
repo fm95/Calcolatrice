@@ -45,16 +45,16 @@ unsigned int Quadrilatero::getNumLati() const
     return numLati;
 }
 
-double Quadrilatero::getDiagolale(unsigned int v1, unsigned int v2) const
+double Quadrilatero::getDiagolale(unsigned int v1) const
 {
-    if(v1<Vertici.size() && v2<Vertici.size()
-            && (v1==v2+2 || v2==v1+2))
+    if(v1<Vertici.size())
     {
-        if((v1==Vertici.size()-1 && v2==0)
-                || (v1==0 && v2==Vertici.size()-1))
-            return distanza(Vertici[0], Vertici[Vertici.size()-1]);
+        if(v1==Vertici.size()-1)
+            return distanza(Vertici[v1], Vertici[1]);
+        else if(v1==Vertici.size()-2)
+            return distanza(Vertici[v1], Vertici[0]);
         else
-            return distanza(Vertici[v1], Vertici[v2]);
+            return distanza(Vertici[v1], Vertici[v1+2]);
     }
     else
         throw std::invalid_argument("Posizioni non valide!");

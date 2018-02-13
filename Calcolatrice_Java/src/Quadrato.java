@@ -1,10 +1,5 @@
-package PoligoniConvessi;
 
 import java.util.ArrayList;
-
-import Eccezioni.simpleExc;
-import vertice.Punto;
-import vertice.Vertice;
 
 public final class Quadrato extends Rettangolo {
 	public Quadrato(String name, final ArrayList<Vertice> v) throws simpleExc {

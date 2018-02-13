@@ -106,16 +106,16 @@ double PoligonoConvesso::getAngolo(double i1, double pos) const
     throw std::invalid_argument("Info o posizione non valida");
 }
 
-int WindingNumberInclusion(const Vertice &P, const vector<Vertice>& V)
+int PoligonoConvesso::WindingNumberInclusion(const Vertice &P) const
 { // Winding Number Algorithm
     int wn = 0;
-    for (unsigned int i=0; i<V.size(); i++)
+    for (unsigned int i=0; i<Vertici.size(); i++)
     {
-        if (V[i].getY() <= P.getY())
+        if (Vertici[i].getY() <= P.getY())
         {
-            if (V[i + 1].getY()  > P.getY())
+            if (Vertici[i + 1].getY()  > P.getY())
             {
-                double l = isLeft(V[i], V[i + 1], P);
+                double l = isLeft(Vertici[i], Vertici[i + 1], P);
                 if (l > 0)
                     ++wn;
                 else if (l == 0)
@@ -124,9 +124,9 @@ int WindingNumberInclusion(const Vertice &P, const vector<Vertice>& V)
         }
        else
         {
-            if (V[i + 1].getY() <= P.getY())
+            if (Vertici[i + 1].getY() <= P.getY())
             {
-                double l = isLeft(V[i], V[i + 1], P);
+                double l = isLeft(Vertici[i], Vertici[i + 1], P);
                 if (l < 0)
                     --wn;
                 else if (l == 0)
@@ -136,7 +136,7 @@ int WindingNumberInclusion(const Vertice &P, const vector<Vertice>& V)
     }
     return wn;
 }
-double isLeft(const Vertice &v0, const Vertice &v1, const Vertice &v2)
+double PoligonoConvesso::isLeft(const Vertice &v0, const Vertice &v1, const Vertice &v2)
 {
     return ( (v1.getX() - v0.getX()) * (v2.getY() - v0.getY())
              - (v2.getX() -  v0.getX()) * (v1.getY() - v0.getY()) );
@@ -218,7 +218,7 @@ PoligonoConvesso* PoligonoConvesso::inserisciVertice(QString nome, Vertice& v) c
 { // per ora si puo' creare al massimo un quadrilatero, altrimenti va estesa la gerarchia
     if(Vertici.size()<4)
     {
-        if( WindingNumberInclusion(v, Vertici) == 0 )
+        if( this->WindingNumberInclusion(v) == 0 )
         {
             vector<Vertice> aux = Vertici;
             aux.push_back(v);
