@@ -312,6 +312,7 @@ void Calcolatrice::seleziona(poligoniC *&pC)
             ui->Grafici->setCurrentIndex(0);
             ui->inserisciVertice->setEnabled(true);
             ui->eliminaVertice->setEnabled(false);
+            ui->Diagonale->setEnabled(false);
         }
         else if(pC->getPol().size() == 4) // quadrilatero o >
         {
@@ -319,6 +320,7 @@ void Calcolatrice::seleziona(poligoniC *&pC)
             ui->eliminaVertice->setEnabled(true);
             ui->inserisciVertice->setEnabled(false);
             ui->Apotema->setEnabled(true);
+            ui->Diagonale->setEnabled(true);
         }
         ct->c_stampaFigura(pC->getNome());
     }
