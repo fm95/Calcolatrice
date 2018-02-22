@@ -33,7 +33,7 @@ double Rettangolo::getDiagolale() const
     return distanza(Vertici[0], Vertici[2]);
 }
 
-void Rettangolo::print(std::ostream &os) const
+void Rettangolo::print(ostream &os) const
 { // non stampo gli angoli, perche' e' ovvio che sono di 90°
     os<<getNome().toStdString()<<": ";
     for(int i=0; i<4; ++i)

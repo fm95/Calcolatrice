@@ -24,7 +24,7 @@ void GraphController::c_eliminaV(QString vecchio, QString nuovo, unsigned int po
     try
     {
         dati->eliminaVertice(vecchio, nuovo, pos);
-        PoligonoConvesso *&newP =  dati->getPoligono(nuovo); // alias di puntatore
+        PoligonoConvesso *& newP =  dati->getPoligono(nuovo); // alias di puntatore
         vector<Vertice> &v = newP->getVertici(); // alias
 
         QPolygonF f; // poligono da disegnare
@@ -260,7 +260,7 @@ PoligonoConvesso*& GraphController::c_getPoligono(QString n) const
     return dati->getPoligono(n);
 }
 
-vector<Vertice> &GraphController::c_getVertici(QString nome)
+vector<Vertice>& GraphController::c_getVertici(QString nome)
 {
     return dati->getPoligono(nome)->getVertici();
 }

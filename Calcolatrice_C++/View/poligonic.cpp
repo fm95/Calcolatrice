@@ -9,7 +9,7 @@ poligoniC::poligoniC(QString n, QPolygonF p, GScene *parent) :
 {
     setFlag(QGraphicsItem::ItemIsSelectable, true);
     setFlag(QGraphicsItem::ItemIsFocusable, true);
-    setFillRule(Qt::WindingFill);
+    setFillRule(Qt::WindingFill); // click property
 }
 
 QString poligoniC::getNome() const

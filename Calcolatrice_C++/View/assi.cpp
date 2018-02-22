@@ -13,7 +13,7 @@ void Assi::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
 //    Assi X e Y
     painter->setPen(QPen(Qt::black, 0.5, Qt::SolidLine));
-    AsseX.setLine(-3,0, 165,0); // da definire in base alla larghezza di info
+    AsseX.setLine(-3,0, 165,0);
     AsseY.setLine(0,-3, 0,110);
     painter->drawLine(AsseX);
     painter->drawLine(AsseY);
