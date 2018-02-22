@@ -1,10 +1,8 @@
 #include "vertice.h"
 
-Vertice::Vertice(): Punto(), info(0) {}
+Vertice::Vertice(const Punto &p, double i): Punto(p), info(i) {}
 
 Vertice::Vertice(double x, double y, double i) : Punto(x, y), info(i) {}
-
-Vertice::Vertice(const Punto &p, double i): Punto(p), info(i) {}
 
 double Vertice::getInfo()const
 {

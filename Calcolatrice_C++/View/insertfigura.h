@@ -41,7 +41,8 @@ private:
     double inf = -1; // nuovo campo info
     QString Nome = ""; // nome della figura da cambiare
 
-    bool checkNome(); // controlli sugli input del form
+    // controlli sugli input del form
+    bool checkNome();
     bool checknLati();
     bool checkVertice();
 };

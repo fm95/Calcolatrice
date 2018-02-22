@@ -24,7 +24,7 @@ void GView::mouseDoubleClickEvent(QMouseEvent *event)
 {
     if(sc->items().size()>1) // altrimenti ci sono solo gli assi, che ovviamente non devo considerare
     {
-        QPointF p = event->pos(); // posizione dove ho clikkate
+        QPointF p = event->pos(); // posizione dove ho clikkato
         double x = (double)(p.x()/4-7); // vengono 'scalati' alla scene
         double y = (double)(p.y()/4-5.4); // scene->scale(4,4) + margini
         p.setX(x); p.setY(y);

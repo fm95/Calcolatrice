@@ -11,9 +11,8 @@ using std::atan2;
 class Vertice: public Punto
 {
 public:
-    Vertice();
+    Vertice(const Punto& =Punto(), double =0);
     Vertice(double, double, double =0);
-    Vertice(const Punto&, double =0);
 
     double getInfo() const;
     void setInfo(double i);
