@@ -19,6 +19,8 @@ Calcolatrice::Calcolatrice(QWidget *parent) :
     setFixedSize(760, 750);
     setUpdatesEnabled(true);
 
+//    setAttribute(Qt::WA_DeleteOnClose); nel main: Calcolatrice *w
+
 //    TRIANGOL0
     lt.setContentsMargins(0,0,0,0);
     vT = new GView(this);
@@ -93,20 +95,20 @@ void Calcolatrice::closeEvent(QCloseEvent *event)
 void Calcolatrice::mousePressEvent(QMouseEvent *)
 {
     ui->labRisultati->clear(); // pulisce il label dei risultati
-    deseleziona();
+    deseleziona(); // deseleziona il poligono clikkato
     if(ui->Grafici->currentIndex()==0) // triangolo
     {
         ui->inserisciVertice->setEnabled(true);
         ui->eliminaVertice->setEnabled(false);
         ui->eliminaVertice->setToolTip("Il triangolo e' il poligono convesso piu' piccolo!");
-        ui->Diagonale->setEnabled(false);
+        ui->Diagonale->setEnabled(false); // CAZZO!!!
     }
-    else if(ui->Grafici->currentIndex() == 1)// quadrilateri
+    else if(ui->Grafici->currentIndex() == 1) // quadrilateri
     {
         ui->eliminaVertice->setEnabled(true);
         ui->inserisciVertice->setEnabled(false);
         ui->inserisciVertice->setToolTip("Il poligono con 5 lati non e' supportato!");
-        ui->Diagonale->setEnabled(true);
+        ui->Diagonale->setEnabled(true); // CAZZO!!!
     }
 }
 
@@ -312,7 +314,7 @@ void Calcolatrice::seleziona(poligoniC *&pC)
             ui->Grafici->setCurrentIndex(0);
             ui->inserisciVertice->setEnabled(true);
             ui->eliminaVertice->setEnabled(false);
-            ui->Diagonale->setEnabled(false);
+            ui->Diagonale->setEnabled(false); // CAZZO!!!
         }
         else if(pC->getPol().size() == 4) // quadrilatero o >
         {
@@ -320,7 +322,7 @@ void Calcolatrice::seleziona(poligoniC *&pC)
             ui->eliminaVertice->setEnabled(true);
             ui->inserisciVertice->setEnabled(false);
             ui->Apotema->setEnabled(true);
-            ui->Diagonale->setEnabled(true);
+            ui->Diagonale->setEnabled(true); // CAZZO!!!
         }
         ct->c_stampaFigura(pC->getNome());
     }

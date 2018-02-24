@@ -17,7 +17,7 @@ PoligonoConvesso::PoligonoConvesso(QString s, const vector<Vertice> &v, const un
             { // angoli >0 e <180
                 double aux = calcolaAngolo(v,i);
                 if(aux>0 && aux<180)
-                // gradi angoli corretti
+                // gradi angolo corretti
                     sum += aux;
                 else
                     test=false;
@@ -29,7 +29,7 @@ PoligonoConvesso::PoligonoConvesso(QString s, const vector<Vertice> &v, const un
             throw invalid_argument("I vertici non formano un poligono convesso!");
     }
     else
-        throw invalid_argument("Inserisci un numero valido di vertici, massimo 4!");
+        throw invalid_argument("Inserisci un numero valido di vertici!");
 }
 
 double PoligonoConvesso::calcolaAngolo(const vector<Vertice> &p, unsigned int pos)
@@ -41,7 +41,7 @@ double PoligonoConvesso::calcolaAngolo(const vector<Vertice> &p, unsigned int po
     else if((pos+1) == p.size())
         return AngoloVertici(p[pos-1], p[pos], p[0]);
     else
-        return -1;
+        return -1; // avoid warning
 }
 
 void PoligonoConvesso::print(std::ostream &stream) const
@@ -61,7 +61,7 @@ void PoligonoConvesso::print(std::ostream &stream) const
     }
 }
 
-vector<Vertice> &PoligonoConvesso::getVertici()
+vector<Vertice>& PoligonoConvesso::getVertici()
 {
     return Vertici;
 }
@@ -76,11 +76,11 @@ double PoligonoConvesso::getLato(double i1, double pos) const
             return distanza(Vertici[pos], Vertici[pos+1]);
     }
     else
-    { // info diversi, prendo i primi due che soddisfano l'uguaglianza
+    { // info diversi, prendo il primo due che soddisfa l'uguaglianza
         for(unsigned int i=0; i<Vertici.size(); ++i)
         {
-            if(i==(Vertici.size()-1) && // ultimo vertice
-                    Vertici[i].getInfo()==i1)
+            if(Vertici[i].getInfo()==i1 // ultimo vertice
+                    && i==(Vertici.size()-1))
                 return distanza(Vertici[i], Vertici[0]);
 
             else if(Vertici[i].getInfo()==i1) // vertice qualsiasi
@@ -152,7 +152,6 @@ bool PoligonoConvesso::isEquiangolo() const
     double primo = calcolaAngolo(Vertici,0);
     for(unsigned int i=1; i<Vertici.size(); ++i)
     {
-
         if(primo != calcolaAngolo(Vertici,i))
             return false;
     }

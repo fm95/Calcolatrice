@@ -24,7 +24,7 @@ void GraphController::c_eliminaV(QString vecchio, QString nuovo, unsigned int po
     try
     {
         dati->eliminaVertice(vecchio, nuovo, pos);
-        PoligonoConvesso *&newP =  dati->getPoligono(nuovo); // alias di puntatore
+        PoligonoConvesso *& newP =  dati->getPoligono(nuovo); // alias di puntatore
         vector<Vertice> &v = newP->getVertici(); // alias
 
         QPolygonF f; // poligono da disegnare
@@ -178,11 +178,9 @@ QString GraphController::c_getAVG(QString nome) const
     vector<Vertice> &v = newP->getVertici();
     for(unsigned int i=0; i<v.size(); ++i)
     {
-        s += QString::number(v[i].getInfo());
-        if(i<v.size()-1)
-            s += " + ";
-        else
-            s += ")/" + QString::number(v.size()) + " = ";
+        double inf = v[i].getInfo();
+        inf < 0 ? s += "(" + QString::number(inf) + ")" : s += QString::number(inf);
+        i < v.size()-1 ? s += " + " : s += ")/" + QString::number(v.size()) + " = ";
     }
     s += QString::number(dati->getAVG(nome));
     return s;
@@ -195,11 +193,9 @@ QString GraphController::c_getSomma(QString nome) const
     vector<Vertice> &v = newP->getVertici();
     for(unsigned int i=0; i<v.size(); ++i)
     {
-        s += QString::number(v[i].getInfo());
-        if(i<v.size()-1)
-            s += " + ";
-        else
-            s += " = ";
+        double inf = v[i].getInfo();
+        inf < 0 ? s += "(" + QString::number(inf) + ")" : s += QString::number(inf);
+        i < v.size()-1 ? s += " + " : s += " = ";
     }
     s += QString::number(dati->getSomma(nome));
     return s;
@@ -212,11 +208,9 @@ QString GraphController::c_getSottrazione(QString nome) const
     vector<Vertice> &v = newP->getVertici();
     for(unsigned int i=0; i<v.size(); ++i)
     {
-        s += QString::number(v[i].getInfo());
-        if(i<v.size()-1)
-            s += " - ";
-        else
-            s += " = ";
+        double inf = v[i].getInfo();
+        inf < 0 ? s += "(" + QString::number(inf) + ")" : s += QString::number(inf);
+        i < v.size()-1 ? s += " - " : s += " = ";
     }
     s += QString::number(dati->getSottrazione(nome));
     return s;
@@ -260,7 +254,7 @@ PoligonoConvesso*& GraphController::c_getPoligono(QString n) const
     return dati->getPoligono(n);
 }
 
-vector<Vertice> &GraphController::c_getVertici(QString nome)
+vector<Vertice>& GraphController::c_getVertici(QString nome)
 {
     return dati->getPoligono(nome)->getVertici();
 }
