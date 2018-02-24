@@ -19,6 +19,8 @@ Calcolatrice::Calcolatrice(QWidget *parent) :
     setFixedSize(760, 750);
     setUpdatesEnabled(true);
 
+//    setAttribute(Qt::WA_DeleteOnClose); nel main: Calcolatrice *w
+
 //    TRIANGOL0
     lt.setContentsMargins(0,0,0,0);
     vT = new GView(this);

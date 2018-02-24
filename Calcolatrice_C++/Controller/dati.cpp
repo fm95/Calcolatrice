@@ -131,7 +131,8 @@ double Dati::getDiagonale(QString nome, unsigned int pos) const
         if((*it)->getNome() == nome)
         {
             if((*it)->getNumLati()==4) //se la gerarchia viene estesa
-                return dynamic_cast<Quadrilatero*>(*it)->getDiagolale(pos);
+                return static_cast<Quadrilatero*>(*it)->getDiagolale(pos);
+                // static_cast because getDiagonale is NOT virtual
         }
     }
     return -1;
