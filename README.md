@@ -10,7 +10,7 @@ Per eseguirla su Ubuntu basta scaricare l'eseguibile 'Calcolatrice', aprire un t
 scaricato il file e digitare './Calcolatrice' e premere invio.
 Su Windows, semplicemente, installate Ubuntu :), oppure seguire le istruzioni per l'esecuzione su Ubuntu dalla shell bash Ubuntu (Windows 10).
 
-Per un corretto utilizzo della Calcolatrice leggere la sezione 'Manuale Utente' nel file 'relazione.pdf', che si trova nella cartella Calcolatrice_C++.
+Per un corretto utilizzo della Calcolatrice leggere la sezione 'Manuale Utente' nel file 'relazione.pdf'.
 
 
 -> Per BUG o qualunque dubbio-commento-idea-proposta aprire un issue.
