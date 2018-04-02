@@ -8,9 +8,9 @@ L'applicazione e' stata sviluppata in C++ secondo il pattern architetturare MVC 
   
 Per eseguirla su Ubuntu basta scaricare l'eseguibile 'Calcolatrice', aprire un terminale nella cartella in cui si è
 scaricato il file e digitare './Calcolatrice' e premere invio.
-  -> Se nell'esecuzione viene mostrato il seguente errore: 'bash: ./Calcolatrice: Permission denied', digitare:
-      $ sudo chmod +x Calcolatrice
-      $ ./Calcolatrice
+  - Se nell'esecuzione viene mostrato il seguente errore: 'bash: ./Calcolatrice: Permission denied', digitare:
+      1) sudo chmod +x Calcolatrice
+      2) ./Calcolatrice
 
 Su Windows, semplicemente, installate Ubuntu :), oppure seguire le istruzioni per l'esecuzione su Ubuntu dalla shell bash Ubuntu (Windows 10).
 
