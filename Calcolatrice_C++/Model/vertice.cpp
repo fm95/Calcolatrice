@@ -46,7 +46,7 @@ double AngoloVertici(const Vertice &a, const Vertice &b, const Vertice &c)
     double cross = (ab.getX() * cb.getY() - ab.getY() * cb.getX());
 
     double alpha = atan2(cross, dot);
-    return (alpha * 180 / M_PI);
+    return std::abs(alpha * 180 / M_PI);
 }
 
 ostream& operator << (ostream& os, const Vertice& v)
