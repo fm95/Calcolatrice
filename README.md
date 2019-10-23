@@ -1,20 +1,20 @@
 # Calcolatrice
 
-Calcolatrice di Poligoni creata per l'esame di Programmazione ad Oggetti dell'Universita' di Padova (Facoltà di Informatica).
+This QT C++ Application is a polygon calculatore developed during the Object Oriented course in the second year of my bachelor degree in Computer science.
 
-L'applicazione e' stata sviluppata in C++ secondo il pattern architetturare MVC (Model View Controller), e in particolare: 
-  - il model e' stato sviluppato in C++
-  - la view e' stata sviluppata usando la libreria Qt
+This application has been developed by following the MVC (Model View Controller) architectural pattern, and in particular:
+  - the Model has been developed in C++;
+  - the view has been developed using the Qt library.
   
-Per eseguirla su Ubuntu basta scaricare l'eseguibile 'Calcolatrice', aprire un terminale nella cartella in cui si è
-scaricato il file e digitare './Calcolatrice' e premere invio.
-  - Se nell'esecuzione viene mostrato il seguente errore: 'bash: ./Calcolatrice: Permission denied', digitare:
+To execute it on Ubuntu just download the executable file 'Calcolatrice', open a terminal in the forlder where you downloaded the file, type './Calcolatrice' and press enter.
+  - If during the execution you get the following error: 'bash: ./Calcolatrice: Permission denied', type:
       1) sudo chmod +x Calcolatrice
       2) ./Calcolatrice
 
-Su Windows, semplicemente, installate Ubuntu :), oppure seguire le istruzioni per l'esecuzione su Ubuntu dalla shell bash Ubuntu (Windows 10).
+If you are currently using Windows (install Ubuntu :)) or use the Ubuntu shell bash available on Windows 10 and follow the execution commands for Ubuntu.
 
-Per un corretto utilizzo della Calcolatrice leggere la sezione 'Manuale Utente' nel file 'relazione.pdf'.
+In order to correctly execute and use the application read the 'Manuale utente' file (ONLY in italian) inside the 'relazione.pdf' file.
 
+-> If you wanna report any bug, or you wanna propose something just open an issue.
 
--> Per BUG o qualunque dubbio-commento-idea-proposta aprire un issue.
+Enjoy!
